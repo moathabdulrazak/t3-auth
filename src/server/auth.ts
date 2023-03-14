@@ -1,8 +1,8 @@
-import { type GetServerSidePropsContext } from "next";
+import { GetServerSidePropsContext } from "next";
 import {
   getServerSession,
-  type NextAuthOptions,
-  type DefaultSession,
+  NextAuthOptions,
+  DefaultSession,
 } from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
 import GoogleProvider from "next-auth/providers/google";
@@ -48,7 +48,6 @@ export const authOptions: NextAuthOptions = {
   },
   adapter: PrismaAdapter(prisma),
   providers: [
-
     GoogleProvider({
       clientId: env.GOOGLE_CLIENT_ID,
       clientSecret: env.GOOGLE_CLIENT_SECRET,
@@ -63,6 +62,9 @@ export const authOptions: NextAuthOptions = {
      * @see https://next-auth.js.org/providers/github
      */
   ],
+  pages: {
+    // signIn: "signIn",
+  },
 };
 
 /**
